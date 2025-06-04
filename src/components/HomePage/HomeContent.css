@@ -7,12 +7,14 @@
   font-size: 4.5rem;
   font-weight: 800;
   color: var(--text-color);
+  transition: color 1s ease;
 }
 
 .title-tagline {
   font-family: 'Advent Pro', sans-serif;
   font-size: 1.5rem;
   color: var(--text-color);
+  transition: color 1s ease;
 }
 
 .wrapper {
@@ -25,9 +27,8 @@
   align-items: center;
   justify-content: center;
   gap: 25px;
+  z-index: 3;
 }
-
-
 
 .submit-btn {
   cursor: pointer;
@@ -39,17 +40,16 @@
   font-family: 'Advent Pro', sans-serif;
 }
 
-
-.carousel{
-     display: flex;
-     justify-content: space-between;
-     gap: 20px;
-     font-family: "Advent Pro", sans-serif;
-     font-size: 1.5rem;
-     color: var(--text-color);
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  transition: color 1s ease;
 }
 
-.carousel .button{
-    cursor: pointer;
-    
+.carousel .button {
+  cursor: pointer;
 }

@@ -7,7 +7,7 @@ import bg2 from '../assets/energetic-bg.jpg';
 import bg3 from '../assets/chill-bg.jpg';
 import bg4 from '../assets/focus-bg.jpg';
 import bg5 from '../assets/sad-bg.jpg';
-import "./Home.css"
+import './Home.css';
 
 export function Home() {
   const moods = ['Happy', 'Energetic', 'Chill', 'Focus', 'Sad'];
@@ -28,40 +28,39 @@ export function Home() {
   return (
     <MainLayout>
       <div className="bg-wrapper">
-        <motion.div 
-        key={newImage}
-        initial={{opacity:0}}
-        animate={{opacity:1}}
-        transition={{duration:1}}
-        className="newbg-container" style={{
-            backgroundImage:`url(${newImage})`
-        }}></motion.div>
+        <motion.div
+          key={newImage}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="newbg-container"
+          style={{
+            backgroundImage: `url(${newImage})`,
+          }}
+        ></motion.div>
 
+        <motion.div
+          className="oldbg-container"
+          key={oldImage}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          style={{
+            backgroundImage: `url(${oldImage})`,
+          }}
+        ></motion.div>
 
-        <motion.div className="oldbg-container" 
-        key={oldImage}
-        initial={{opacity:1}}
-        animate={{opacity:0}}
-        transition={{duration:1}}
-        style={{
-            backgroundImage:`url(${oldImage})`
-        }}>
-         
-        </motion.div>
-
-         <HomeContent
-            mood={mood}
-            setMood={setMood}
-            setnewImage={setnewImage}
-            moods={moods}
-            images={images}
-            direction={direction}
-            setDirection={setDirection}
-            setoldImage={setoldImage}
-          />
+        <HomeContent
+          mood={mood}
+          setMood={setMood}
+          setnewImage={setnewImage}
+          moods={moods}
+          images={images}
+          direction={direction}
+          setDirection={setDirection}
+          setoldImage={setoldImage}
+        />
       </div>
-
-
     </MainLayout>
   );
 }

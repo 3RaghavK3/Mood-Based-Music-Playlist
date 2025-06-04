@@ -16,7 +16,6 @@ export function HomeContent({
     const root = document.documentElement;
     if (moods[index] === 'Sad') {
       root.style.setProperty('--text-color', 'white');
-      
     } else {
       root.style.setProperty('--text-color', 'black');
     }

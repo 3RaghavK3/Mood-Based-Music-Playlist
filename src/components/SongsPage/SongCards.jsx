@@ -1,7 +1,7 @@
 import { Heart } from '../../assets/heartIcon';
 import { PausePlay } from '../../assets/PausePlay';
 import '../../pages/SongsPage.css';
-export function SongCards() {
+export function SongCards({ title, artist }) {
   return (
     <div
       className="song-card"
@@ -32,7 +32,7 @@ export function SongCards() {
             fontSize: '2rem',
           }}
         >
-          Song Title 1
+          {title}
         </div>
 
         <div
@@ -41,7 +41,7 @@ export function SongCards() {
             fontSize: '1.25rem',
           }}
         >
-          Artist 1
+          {artist}
         </div>
       </div>
       <div

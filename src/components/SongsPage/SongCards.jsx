@@ -1,5 +1,6 @@
 import { Heart } from '../../assets/heartIcon';
 import { PausePlay } from '../../assets/PausePlay';
+import '../../pages/SongsPage.css';
 export function SongCards() {
   return (
     <div
@@ -13,6 +14,7 @@ export function SongCards() {
         marginTop: '10px',
         border: '1px solid black',
         borderRadius: '20px',
+        backgroundColor: `var(--songsCard-color)`,
       }}
     >
       <div

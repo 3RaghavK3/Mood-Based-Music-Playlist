@@ -3,7 +3,8 @@
     "@vitejs/plugin-react": "^4.5.1",
     "motion": "^12.16.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.6.2"
   },
   "devDependencies": {
     "prettier": "^3.5.3"

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import './HomeContent.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function HomeContent({
   mood,
@@ -12,14 +13,18 @@ export function HomeContent({
   setDirection,
   setoldImage,
 }) {
-  const textColor = (index) => {
+  const textColor = (currentmood) => {
     const root = document.documentElement;
-    if (moods[index] === 'Sad') {
+    if (currentmood === 'Sad') {
       root.style.setProperty('--text-color', 'white');
     } else {
       root.style.setProperty('--text-color', 'black');
     }
   };
+
+  useEffect(() => {
+    textColor(mood);
+  }, [mood]);
 
   const goPrevious = () => {
     setDirection('prev');
@@ -33,7 +38,6 @@ export function HomeContent({
     }
 
     setMood(moods[newIndex]);
-    textColor(newIndex);
     setnewImage(images[moods[newIndex]]);
   };
 
@@ -49,7 +53,6 @@ export function HomeContent({
     }
 
     setMood(moods[newIndex]);
-    textColor(newIndex);
     setnewImage(images[moods[newIndex]]);
   };
 
@@ -77,6 +80,12 @@ export function HomeContent({
 
   const variants = animation();
 
+  const navigate = useNavigate();
+
+  const goToSongs = () => {
+    navigate(`/user/${mood}`);
+  };
+
   return (
     <div className="wrapper">
       <div className="title">CHOOSE YOUR MOOD</div>
@@ -94,7 +103,7 @@ export function HomeContent({
           initial={variants.initial}
           animate={variants.animate}
           exit={variants.exit}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.75 }}
         >
           {mood}
         </motion.span>
@@ -103,7 +112,10 @@ export function HomeContent({
           {'\u2192'}
         </span>
       </div>
-      <div className="submit-btn">Go</div>
+
+      <div className="submit-btn" id="go-btn" onClick={goToSongs}>
+        Go
+      </div>
     </div>
   );
 }

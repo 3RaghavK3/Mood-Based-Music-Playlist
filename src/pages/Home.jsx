@@ -23,7 +23,7 @@ export function Home() {
   const [mood, setMood] = useState('Happy');
   const [newImage, setnewImage] = useState(bg1);
   const [direction, setDirection] = useState(null);
-  const [oldImage, setoldImage] = useState(bg1);
+  const [oldImage, setoldImage] = useState(null);
 
   return (
     <MainLayout>

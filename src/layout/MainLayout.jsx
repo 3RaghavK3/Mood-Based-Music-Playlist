@@ -1,5 +1,6 @@
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import '../pages/SongsPage.css';
 
 export function MainLayout({ children }) {
   return (
@@ -9,6 +10,7 @@ export function MainLayout({ children }) {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        backgroundColor: 'var(--bg-color)',
       }}
     >
       <Header />

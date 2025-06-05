@@ -9,8 +9,11 @@ import './SongsPage.css';
 export function SongsPage() {
   const { mood } = useParams();
   const [songs, setSongs] = useState([]);
+  const [playlist,setPlaylist]=useState({})
+  const [isPlayed, setIsPlayed] = useState(false);
   const [shufflepressed, setshuffle] = useState(false);
   const count = useRef(0);
+  const audioRef = useRef(null);
 
   console.log(mood);
 
@@ -52,7 +55,10 @@ export function SongsPage() {
     fetch(`http://localhost:3000/songs/${mood}`)
       .then((res) => res.json())
       .then((data) => {
-        setSongs(data.data);
+        setSongs(data.tracksinfo);
+        setPlaylist(data.playlistinfo)
+        console.log(songs)
+        console.log(playlist)
         count.current = count.current + 1;
         setshuffle(false);
       })
@@ -76,15 +82,15 @@ export function SongsPage() {
         <div
           className="wrapper-container"
           style={{
-            position: 'relative',
             display: 'flex',
             flexDirection: 'column',
-            top: '75px',
+             marginTop: '75px',
             width: '85%',
             margin: `0 auto`,
+            marginBottom:'10px'
           }}
         >
-          <DetailsContainer />
+          <DetailsContainer playlist={playlist}/>
           <div
             style={{
               width: '100%',
@@ -120,6 +126,9 @@ export function SongsPage() {
                 title={song.title}
                 artist={song.artist.name}
                 preview={song.preview}
+                isPlayed={isPlayed}
+                setIsPlayed={setIsPlayed}
+
               />
             ) : null
           )}

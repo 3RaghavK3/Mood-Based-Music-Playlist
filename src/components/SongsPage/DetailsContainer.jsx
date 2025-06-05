@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import '../../pages/SongsPage.css';
 import { useEffect } from 'react';
 
-export function DetailsContainer() {
+export function DetailsContainer({playlist}) {
   const { mood } = useParams();
 
   const taglines = {
@@ -34,7 +34,7 @@ export function DetailsContainer() {
         marginBottom: '15px',
         width: '100%',
         border: '5px solid black',
-        height: '150px',
+        height: '200px',
         backgroundColor: `var(--details-color)`,
       }}
     >
@@ -51,7 +51,7 @@ export function DetailsContainer() {
             padding: 0,
             border: `1px solid black`,
             fontFamily: `'Baloo Thambi 2', system-ui`,
-            fontSize: '4rem',
+            fontSize: '5rem',
             fontWeight: 800,
             color: 'var(--text-color)',
           }}
@@ -73,7 +73,7 @@ export function DetailsContainer() {
       </div>
 
       <div
-        className="preview-area"
+        className="playlist-area"
         style={{
           flex: 1,
           display: 'flex',
@@ -84,7 +84,7 @@ export function DetailsContainer() {
           backgroundColor: `var(--songsCard-color)`,
         }}
       >
-        <div className="preview-song-details" style={{ flex: 1 }}>
+        <div className="playlist-song-details" style={{ flex: 2}}>
           <div
             style={{
               fontFamily: `'Advent Pro', sans-serif`,
@@ -92,42 +92,24 @@ export function DetailsContainer() {
               fontSize: '2rem',
             }}
           >
-            Song Title 1
-          </div>
-
-          <div
-            style={{
-              fontFamily: `'Advent Pro', sans-serif`,
-              fontSize: '1.25rem',
-            }}
-          >
-            Artist 1
+            {playlist.title}
           </div>
         </div>
 
-        <div className="audio-controls" style={{ flex: 1 }}>
-          <div style={{ height: '100%', width: '100%', padding: '10px' }}>
-            <div
-              className="timeline"
-              style={{
-                textAlign: 'center',
-                marginBottom: '10px',
-              }}
-            >
-              dwadwadawdawd
-            </div>
-            <div className="audio-controller-options" style={{ display: 'flex' }}>
-              <div className="previous" style={{ ...buttoncontainers, flex: 1 }}>
-                <img src={prevtrack} style={{ height: '30px', width: '30px' }}></img>
-              </div>
-              <div className="StopResume" style={{ ...buttoncontainers, flex: 2 }}>
-                <img src={pausecircle} style={{ height: '60px', width: '60px' }}></img>
-              </div>
-              <div className="next" style={{ ...buttoncontainers, flex: 1 }}>
-                <img src={nexttrack} style={{ height: '30px', width: '30px' }}></img>
-              </div>
-            </div>
-          </div>
+        <div
+  className="playlist-pic"
+  style={{
+    flex:1,
+    height:"100%",
+    border:'1px solid black',
+    backgroundImage: `url(${playlist.picture_xl})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'right center', 
+  }}
+>
+
+            
         </div>
       </div>
     </div>

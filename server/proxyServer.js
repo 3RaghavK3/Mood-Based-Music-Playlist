@@ -19,13 +19,17 @@ app.get('/songs/:mood', (req, res) => {
         });
       } else {
         let randomPlaylistUrl =
-          result.data[Math.floor(Math.random() * result.data.length)].tracklist;
+          result.data[Math.floor(Math.random() * result.data.length)];
 
-        fetch(randomPlaylistUrl)
+        console.log(randomPlaylistUrl)
+       
+        fetch(randomPlaylistUrl.tracklist)
           .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            res.json(data);
+          .then((trackdata) => {
+            res.json({
+              tracksinfo:trackdata.data,
+              playlistinfo:randomPlaylistUrl
+            });
           })
           .catch((error) => {
             console.log(error);

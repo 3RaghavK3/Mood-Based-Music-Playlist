@@ -13,7 +13,7 @@ export function Header() {
   };
 
   return (
-    <div className="Header">
+    <div className={onHome?"Header":"SongsHeader"}>
       <span>VibeStream</span>
       <div className="options">
         <span

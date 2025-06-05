@@ -1,4 +1,4 @@
-.Header {
+.Header ,.SongsHeader{
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -10,10 +10,15 @@
   font-weight: 400;
   font-size: 1.5rem;
   margin-top: 10px;
+  margin-bottom: 50px;
   position: fixed;
   z-index: 3;
   color: var(--text-color);
   transition: color 1s ease;
+}
+
+.SongsHeader{
+  position: relative;
 }
 
 .options {

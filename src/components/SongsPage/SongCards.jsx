@@ -3,8 +3,8 @@ import { Heart } from '../../assets/heartIcon';
 import { PausePlay } from '../../assets/PausePlay';
 import '../../pages/SongsPage.css';
 import { useRef } from 'react';
-export function SongCards({ title, artist, preview }) {
-  const audioRef = useRef(null);
+export function SongCards({title,artist,preview,isPlayed,setIsPlayed}) {
+
 
   return (
     <div
@@ -70,7 +70,8 @@ export function SongCards({ title, artist, preview }) {
             flex: 1,
           }}
         >
-          <PausePlay song={preview} />
+          <PausePlay  song={preview}  isPlayed={isPlayed}
+                setIsPlayed={setIsPlayed}/>
         </div>
 
         <div

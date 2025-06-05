@@ -1,7 +1,11 @@
+import { audio } from 'motion/react-client';
 import { Heart } from '../../assets/heartIcon';
 import { PausePlay } from '../../assets/PausePlay';
 import '../../pages/SongsPage.css';
-export function SongCards({ title, artist }) {
+import { useRef } from 'react';
+export function SongCards({ title, artist, preview }) {
+  const audioRef = useRef(null);
+
   return (
     <div
       className="song-card"
@@ -44,6 +48,10 @@ export function SongCards({ title, artist }) {
           {artist}
         </div>
       </div>
+
+      <div>
+        <></>
+      </div>
       <div
         className="options"
         style={{
@@ -62,7 +70,7 @@ export function SongCards({ title, artist }) {
             flex: 1,
           }}
         >
-          <PausePlay />
+          <PausePlay song={preview} />
         </div>
 
         <div

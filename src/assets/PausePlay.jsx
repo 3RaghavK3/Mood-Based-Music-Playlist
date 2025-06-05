@@ -1,7 +1,22 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
-export function PausePlay() {
-  const [isplayed, setplayed] = useState(false);
+export function PausePlay({ song }) {
+  const [isPlayed, setIsPlayed] = useState(false);
+  const audioRef = useRef(null);
+
+  const togglePlay = () => {
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+      setIsPlayed(true);
+    } else {
+      audioRef.current.pause();
+      setIsPlayed(false);
+    }
+  };
+
+  const checkended = () => {
+    if (audioRef.current.ended) setIsPlayed(false);
+  };
 
   return (
     <div
@@ -9,9 +24,11 @@ export function PausePlay() {
         fontSize: '3rem',
         cursor: 'pointer',
       }}
-      onClick={() => setplayed(!isplayed)}
+      onClick={togglePlay}
     >
-      {isplayed ? '⏸' : '▶'}
+      {isPlayed ? '⏸' : '▶'}
+
+      <audio src={song} ref={audioRef} onTimeUpdate={checkended} />
     </div>
   );
 }

@@ -113,9 +113,16 @@ export function SongsPage() {
             {console.log(songs)}
           </div>
 
-          {songs.map((song) => (
-            <SongCards key={song.id} title={song.title} artist={song.artist.name} />
-          ))}
+          {songs.map((song) =>
+            song.preview ? (
+              <SongCards
+                key={song.id}
+                title={song.title}
+                artist={song.artist.name}
+                preview={song.preview}
+              />
+            ) : null
+          )}
         </div>
       </MainLayout>
     </>

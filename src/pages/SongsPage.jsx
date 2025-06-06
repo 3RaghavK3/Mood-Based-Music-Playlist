@@ -3,15 +3,14 @@ import { DetailsContainer } from '../components/SongsPage/detailsContainer';
 import { SongCards } from '../components/SongsPage/songCards';
 import { MainLayout } from '../layout/Mainlayout';
 import { useEffect, useState, useRef, useContext } from 'react';
-import { FetchedMoodsContext } from '../context/FetchMoodsContext';
+import { SongsPageContext  } from '../context/SongsPageContext';
 
 import './SongsPage.css';
 
 
 export function SongsPage() {
   const { mood } = useParams();
-  const {songs, setSongs,fetchedMoods} = useContext(FetchedMoodsContext)
-  const [playlist, setPlaylist] = useState({});
+  const {songs, setSongs,fetchedMoods,playlist, setPlaylist} = useContext(SongsPageContext)
   const [shufflepressed, setshuffle] = useState(false);
   const count = useRef(0);
   console.log(fetchedMoods)
@@ -58,8 +57,6 @@ useEffect(() => {
       .then((data) => {
         setSongs(data.tracksinfo);
         setPlaylist(data.playlistinfo);
-        console.log(songs);
-        console.log(playlist);
         count.current = count.current + 1;
         fetchedMoods.current.add(mood);
         setshuffle(false);
@@ -96,7 +93,7 @@ useEffect(() => {
               marginBottom: '10px',
             }}
           >
-            <DetailsContainer playlist={playlist} />
+            <DetailsContainer />
             <div
               style={{
                 width: '100%',

@@ -1,12 +1,12 @@
 import { useState, useRef, useContext } from 'react';
 import { PlayerContext } from '../context/PlayerContext.jsx';
 
-export function PausePlay({song }) {
-  const { isPlayed, setIsPlayed, audioRef, currentsong, setcurrentsong } =
+export function PausePlay({id,song }) {
+  const { isPlayed, setIsPlayed, audioRef, currentsongId, setcurrentsongId } =
     useContext(PlayerContext);
 
   const togglePlay = () => {
-    if (currentsong === song) {
+    if (currentsongId ===id ) {
       if (isPlayed) {
         setIsPlayed(false);
         audioRef.current.pause();
@@ -15,7 +15,7 @@ export function PausePlay({song }) {
         audioRef.current.play();
       }
     } else {
-      setcurrentsong(song);
+      setcurrentsongId(id);
       setIsPlayed(true);
       audioRef.current.src = song;
       audioRef.current.play();
@@ -30,7 +30,7 @@ export function PausePlay({song }) {
       }}
       onClick={togglePlay}
     >
-      {isPlayed && currentsong == song ? '⏸' : '▶'}
+      {isPlayed && currentsongId == id ? '⏸' : '▶'}
     </div>
   );
 }

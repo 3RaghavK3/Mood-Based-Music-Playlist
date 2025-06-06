@@ -1,9 +1,11 @@
 import { useParams } from 'react-router-dom';
 import '../../pages/SongsPage.css';
-import { useEffect } from 'react';
+import { useEffect,useContext } from 'react';
 import { AudioPlayer } from './AudioPlayer';
+import { SongsPageContext } from '../../context/SongsPageContext';
 
-export function DetailsContainer({ playlist }) {
+export function DetailsContainer() {
+  const { playlist } = useContext(SongsPageContext );
   const { mood } = useParams();
 
   const taglines = {
@@ -14,12 +16,7 @@ export function DetailsContainer({ playlist }) {
     Energetic: 'Boost your energy with these beats',
   };
 
-  const buttoncontainers = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-  };
+  
 
   return (
     <div
@@ -35,12 +32,7 @@ export function DetailsContainer({ playlist }) {
         backgroundColor: `var(--details-color)`,
       }}
     >
-      <div
-        style={{
-          flex: 2,
-          height: '100%',
-        }}
-      >
+      <div style={{ flex: 2, height: '100%' }}>
         <div
           className="mood-info"
           style={{
@@ -51,7 +43,7 @@ export function DetailsContainer({ playlist }) {
             color: 'var(--text-color)',
           }}
         >
-          MOOD:{mood.toUpperCase()}
+          MOOD: {mood.toUpperCase()}
         </div>
 
         <div
@@ -90,8 +82,7 @@ export function DetailsContainer({ playlist }) {
           </div>
         </div>
 
-        <AudioPlayer />
-
+            
         <div
           className="playlist-pic"
           style={{

@@ -5,11 +5,11 @@ export const PlayerContext = createContext();
 export function PlayerProvider({ children }) {
   const [isPlayed, setIsPlayed] = useState(null);
   const audioRef = useRef(null);
-  const [currentsong, setcurrentsong] = useState(null);
+  const [currentsongId, setcurrentsongId] = useState(null);
 
   return (
     <PlayerContext.Provider
-      value={{ isPlayed, setIsPlayed, audioRef, currentsong, setcurrentsong }}
+      value={{ isPlayed, setIsPlayed, audioRef, currentsongId, setcurrentsongId }}
     >
       {children}
     </PlayerContext.Provider>

@@ -2,17 +2,20 @@ import { AppRoutes } from './routes/AppRoutes';
 import { BrowserRouter } from 'react-router-dom';
 import { PlayerProvider } from './context/PlayerContext';
 import { LikedProvider } from './context/LikedContext';
-import { FetchedMoodsProvider } from './context/FetchMoodsContext';
+import { SongsPageProvider } from './context/SongsPageContext';
+import { AudioPlayer } from './components/SongsPage/AudioPlayer';
 export function App() {
   return (
     <>
+    
       <BrowserRouter>
       <PlayerProvider>
-        <FetchedMoodsProvider>
+        <SongsPageProvider>
           <LikedProvider>
+             <AudioPlayer/>
         <AppRoutes />
         </LikedProvider>
-        </FetchedMoodsProvider>
+        </SongsPageProvider>
         </PlayerProvider>
       </BrowserRouter>
       {/* <Loading/> */}

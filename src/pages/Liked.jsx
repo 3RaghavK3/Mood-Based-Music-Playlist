@@ -2,6 +2,7 @@ import { MainLayout } from '../layout/Mainlayout';
 import { SongCards } from '../components/SongsPage/songCards';
 import { LikedContext } from '../context/LikedContext';
 import { useContext } from 'react';
+import { AudioPlayer } from '../components/SongsPage/AudioPlayer';
 export function Liked() { 
 
   const {likedsongs, setlikedsong}=useContext(LikedContext);
@@ -23,6 +24,7 @@ export function Liked() {
               flex:"1"
             }}
           >
+                
                  <span style={{
                 width: '100%',
                 fontFamily: 'Advent Pro',
@@ -47,6 +49,7 @@ export function Liked() {
                   title={song.title}
                   artist={song.artist}
                   preview={song.preview}
+                  isLiked={song.likestatus}
                   />)
         }
 

@@ -8,7 +8,7 @@ export function AppRoutes() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/user/:mood" element={<SongsPage />} />
-      <Route path="/user/liked" element={<Liked />} />
+      <Route path="/user/library" element={<Liked />} />
     </Routes>
   );
 }

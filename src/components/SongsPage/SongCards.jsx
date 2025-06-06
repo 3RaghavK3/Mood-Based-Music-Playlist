@@ -3,7 +3,7 @@ import { Heart } from '../../assets/heartIcon';
 import { PausePlay } from '../../assets/PausePlay';
 import '../../pages/SongsPage.css';
 import { useRef } from 'react';
-export function SongCards({ title, artist, preview }) {
+export function SongCards({id, title, artist, preview }) {
   return (
     <div
       className="song-card"
@@ -69,7 +69,7 @@ export function SongCards({ title, artist, preview }) {
           }}
         >
           {' '}
-          <PausePlay song={preview} />
+          <PausePlay id={id} song={preview} />
         </div>
 
         <div
@@ -82,7 +82,10 @@ export function SongCards({ title, artist, preview }) {
           }}
         >
           {' '}
-          <Heart />
+          <Heart id={id}
+          title={title}
+                  artist={artist}
+                  song={preview}/>
         </div>
       </div>
     </div>

@@ -8,12 +8,14 @@ export function Header() {
   const location = useLocation();
 
   const onHome = location.pathname == '/';
+  const onLibrary=location.pathname=='/user/library'
+
   const goToHome = () => {
     navigate('/');
   };
 
-  const goToliked = () => {
-    navigate('/user/liked');
+  const goToLibrary = () => {
+    navigate('/user/library');
   };
 
   return (
@@ -28,7 +30,11 @@ export function Header() {
         >
           Home
         </span>
-        <span onClick={goToliked}>Your library</span>
+
+        <span onClick={!onLibrary ? goToLibrary : undefined}
+          style={{
+            cursor: !onLibrary ? 'pointer' : 'not-allowed',
+          }}>Your library</span>
       </div>
     </div>
   );

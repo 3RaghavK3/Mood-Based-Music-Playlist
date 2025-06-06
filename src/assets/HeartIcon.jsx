@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState ,useEffect} from 'react';
+import { LikedContext } from '../context/LikedContext';
 
-export function Heart() {
+export function Heart({id,title,artist,song}) {
   const [isliked, setliked] = useState(false);
+  const {likedsongs, setlikedsong}=useContext(LikedContext);
+ 
 
   return (
     <svg
@@ -12,10 +15,35 @@ export function Heart() {
       fill={isliked ? 'red' : 'white'}
       stroke="black"
       strokeWidth="20"
-      onClick={() => setliked(!isliked)}
+
       style={{
         cursor: 'pointer',
       }}
+
+          onClick={() => {
+      const newLikedStatus = !isliked;
+      setliked(newLikedStatus);
+
+      if (newLikedStatus) {
+        setlikedsong([
+          ...likedsongs,
+          {
+            title: title,
+            artist: artist,
+            id: id,
+            preview: song,
+            likestatus: newLikedStatus,
+          },
+        ]);
+      } else {
+        setlikedsong(likedsongs.filter((s) => s.songid !== id));
+      }
+
+      
+    }}
+
+
+  
     >
       <path
         d="M471.701,73.497c-54.321-46.505-136.007-38.854-186.153,13.566l-19.548,20.009l-19.548-20.009

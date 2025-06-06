@@ -1,7 +1,7 @@
 import { useState, useRef, useContext } from 'react';
 import { PlayerContext } from '../context/PlayerContext.jsx';
 
-export function PausePlay({ song }) {
+export function PausePlay({song }) {
   const { isPlayed, setIsPlayed, audioRef, currentsong, setcurrentsong } =
     useContext(PlayerContext);
 

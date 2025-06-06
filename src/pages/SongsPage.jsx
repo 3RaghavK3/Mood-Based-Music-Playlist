@@ -2,18 +2,19 @@ import { useParams } from 'react-router-dom';
 import { DetailsContainer } from '../components/SongsPage/detailsContainer';
 import { SongCards } from '../components/SongsPage/songCards';
 import { MainLayout } from '../layout/Mainlayout';
-import { useEffect, useState, useRef } from 'react';
-import { PlayerProvider } from '../context/PlayerContext.jsx';
-import { fetchSongs } from '../api/fetchPlaylist';
+import { useEffect, useState, useRef, useContext } from 'react';
+import { FetchedMoodsContext } from '../context/FetchMoodsContext';
+
 import './SongsPage.css';
+
 
 export function SongsPage() {
   const { mood } = useParams();
-  const [songs, setSongs] = useState([]);
+  const {songs, setSongs,fetchedMoods} = useContext(FetchedMoodsContext)
   const [playlist, setPlaylist] = useState({});
   const [shufflepressed, setshuffle] = useState(false);
   const count = useRef(0);
-
+  console.log(fetchedMoods)
   console.log(mood);
 
   const moodColors = {
@@ -49,8 +50,9 @@ export function SongsPage() {
     },
   };
 
-  useEffect(() => {
-    if (count.current == 1) return;
+useEffect(() => {
+    if (count.current == 1 ) return;
+    if(fetchedMoods.current.has(mood) && !shufflepressed ) return
     fetch(`http://localhost:3000/songs/${mood}`)
       .then((res) => res.json())
       .then((data) => {
@@ -59,18 +61,22 @@ export function SongsPage() {
         console.log(songs);
         console.log(playlist);
         count.current = count.current + 1;
+        fetchedMoods.current.add(mood);
         setshuffle(false);
       })
       .catch(console.error);
-  }, [mood, shufflepressed]);
+  }, [ mood,shufflepressed]);
+
 
   const changecolors = () => {
     const colors = moodColors[mood];
+    const root = document.documentElement;
     root.style.setProperty('--bg-color', colors.main);
     root.style.setProperty('--text-color', colors.detailstext);
     root.style.setProperty('--songsCard-color', colors.songcard);
     root.style.setProperty('--details-color', colors.details);
   };
+
   useEffect(() => {
     changecolors();
   }, [mood]);
@@ -78,7 +84,7 @@ export function SongsPage() {
   return (
     <>
       <MainLayout>
-        <PlayerProvider>
+        
           <div
             className="wrapper-container"
             style={{
@@ -117,12 +123,14 @@ export function SongsPage() {
               </div>
 
               {console.log(songs)}
-            </div>
 
-            {songs.map((song) =>
+            </div >
+          
+                    {songs.map((song) =>
               song.preview ? (
                 <SongCards
                   key={song.id}
+                  id={song.id}
                   title={song.title}
                   artist={song.artist.name}
                   preview={song.preview}
@@ -130,7 +138,6 @@ export function SongsPage() {
               ) : null
             )}
           </div>
-        </PlayerProvider>
       </MainLayout>
     </>
   );

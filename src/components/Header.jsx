@@ -12,8 +12,12 @@ export function Header() {
     navigate('/');
   };
 
+  const goToliked = () => {
+    navigate('/user/liked');
+  };
+
   return (
-    <div className={onHome?"Header":"SongsHeader"}>
+    <div className={onHome ? 'Header' : 'SongsHeader'}>
       <span>VibeStream</span>
       <div className="options">
         <span
@@ -24,7 +28,7 @@ export function Header() {
         >
           Home
         </span>
-        <span>Your library</span>
+        <span onClick={goToliked}>Your library</span>
       </div>
     </div>
   );

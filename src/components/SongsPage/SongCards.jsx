@@ -3,9 +3,7 @@ import { Heart } from '../../assets/heartIcon';
 import { PausePlay } from '../../assets/PausePlay';
 import '../../pages/SongsPage.css';
 import { useRef } from 'react';
-export function SongCards({title,artist,preview,isPlayed,setIsPlayed}) {
-
-
+export function SongCards({ title, artist, preview }) {
   return (
     <div
       className="song-card"
@@ -13,7 +11,8 @@ export function SongCards({title,artist,preview,isPlayed,setIsPlayed}) {
         padding: `0px 10px 0px 10px`,
         display: 'flex',
         justifyContent: 'space-between',
-        height: '75px',
+        alignItems: 'center',
+        height: 'fit-content',
         width: '100%',
         marginTop: '10px',
         border: '1px solid black',
@@ -24,7 +23,6 @@ export function SongCards({title,artist,preview,isPlayed,setIsPlayed}) {
       <div
         className="metadata"
         style={{
-          border: `1px solid black`,
           height: '100%',
           width: '250px',
         }}
@@ -70,8 +68,8 @@ export function SongCards({title,artist,preview,isPlayed,setIsPlayed}) {
             flex: 1,
           }}
         >
-          <PausePlay  song={preview}  isPlayed={isPlayed}
-                setIsPlayed={setIsPlayed}/>
+          {' '}
+          <PausePlay song={preview} />
         </div>
 
         <div

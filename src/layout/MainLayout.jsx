@@ -13,7 +13,7 @@ export function MainLayout({ children }) {
         backgroundColor: 'var(--bg-color)',
       }}
     >
-      <Header   />
+      <Header />
       {children}
       <Footer />
     </div>

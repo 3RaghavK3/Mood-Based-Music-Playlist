@@ -3,17 +3,16 @@ import { DetailsContainer } from '../components/SongsPage/detailsContainer';
 import { SongCards } from '../components/SongsPage/songCards';
 import { MainLayout } from '../layout/Mainlayout';
 import { useEffect, useState, useRef } from 'react';
+import { PlayerProvider } from '../context/PlayerContext.jsx';
 import { fetchSongs } from '../api/fetchPlaylist';
 import './SongsPage.css';
 
 export function SongsPage() {
   const { mood } = useParams();
   const [songs, setSongs] = useState([]);
-  const [playlist,setPlaylist]=useState({})
-  const [isPlayed, setIsPlayed] = useState(false);
+  const [playlist, setPlaylist] = useState({});
   const [shufflepressed, setshuffle] = useState(false);
   const count = useRef(0);
-  const audioRef = useRef(null);
 
   console.log(mood);
 
@@ -56,9 +55,9 @@ export function SongsPage() {
       .then((res) => res.json())
       .then((data) => {
         setSongs(data.tracksinfo);
-        setPlaylist(data.playlistinfo)
-        console.log(songs)
-        console.log(playlist)
+        setPlaylist(data.playlistinfo);
+        console.log(songs);
+        console.log(playlist);
         count.current = count.current + 1;
         setshuffle(false);
       })
@@ -79,60 +78,59 @@ export function SongsPage() {
   return (
     <>
       <MainLayout>
-        <div
-          className="wrapper-container"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-             marginTop: '75px',
-            width: '85%',
-            margin: `0 auto`,
-            marginBottom:'10px'
-          }}
-        >
-          <DetailsContainer playlist={playlist}/>
+        <PlayerProvider>
           <div
+            className="wrapper-container"
             style={{
-              width: '100%',
-              fontFamily: 'Advent Pro',
-              fontSize: '2rem',
+              display: 'flex',
+              flexDirection: 'column',
+              marginTop: '75px',
+              width: '85%',
+              margin: `0 auto`,
+              marginBottom: '10px',
             }}
           >
-            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
-              <div>Recommended Tracks</div>
-              <div
-                onClick={() => {
-                  setshuffle(true);
-                  count.current = 0;
-                }}
-                style={{
-                  backgroundColor: 'var(--details-color)',
-                  color: 'var(--text-color)',
-                  fontSize: '1.5rem',
-                  cursor: 'pointer',
-                }}
-              >
-                Shuffle Playlist
+            <DetailsContainer playlist={playlist} />
+            <div
+              style={{
+                width: '100%',
+                fontFamily: 'Advent Pro',
+                fontSize: '2rem',
+              }}
+            >
+              <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
+                <div>Recommended Tracks</div>
+                <div
+                  onClick={() => {
+                    setshuffle(true);
+                    count.current = 0;
+                  }}
+                  style={{
+                    backgroundColor: 'var(--details-color)',
+                    color: 'var(--text-color)',
+                    fontSize: '1.5rem',
+                    cursor: 'pointer',
+                  }}
+                >
+                  Shuffle Playlist
+                </div>
               </div>
+
+              {console.log(songs)}
             </div>
 
-            {console.log(songs)}
+            {songs.map((song) =>
+              song.preview ? (
+                <SongCards
+                  key={song.id}
+                  title={song.title}
+                  artist={song.artist.name}
+                  preview={song.preview}
+                />
+              ) : null
+            )}
           </div>
-
-          {songs.map((song) =>
-            song.preview ? (
-              <SongCards
-                key={song.id}
-                title={song.title}
-                artist={song.artist.name}
-                preview={song.preview}
-                isPlayed={isPlayed}
-                setIsPlayed={setIsPlayed}
-
-              />
-            ) : null
-          )}
-        </div>
+        </PlayerProvider>
       </MainLayout>
     </>
   );

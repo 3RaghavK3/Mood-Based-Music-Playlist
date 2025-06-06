@@ -18,17 +18,16 @@ app.get('/songs/:mood', (req, res) => {
           message: 'No playlists found',
         });
       } else {
-        let randomPlaylistUrl =
-          result.data[Math.floor(Math.random() * result.data.length)];
+        let randomPlaylistUrl = result.data[Math.floor(Math.random() * result.data.length)];
 
-        console.log(randomPlaylistUrl)
-       
+        console.log(randomPlaylistUrl);
+
         fetch(randomPlaylistUrl.tracklist)
           .then((response) => response.json())
           .then((trackdata) => {
             res.json({
-              tracksinfo:trackdata.data,
-              playlistinfo:randomPlaylistUrl
+              tracksinfo: trackdata.data,
+              playlistinfo: randomPlaylistUrl,
             });
           })
           .catch((error) => {

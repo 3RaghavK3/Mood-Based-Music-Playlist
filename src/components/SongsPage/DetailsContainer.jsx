@@ -1,12 +1,9 @@
-import prevtrack from '../../assets/prevtrack.svg';
-import nexttrack from '../../assets/nexttrack.svg';
-import playcircle from '../../assets/Playcircle.svg';
-import pausecircle from '../../assets/Pausecircle.svg';
 import { useParams } from 'react-router-dom';
 import '../../pages/SongsPage.css';
 import { useEffect } from 'react';
+import { AudioPlayer } from './AudioPlayer';
 
-export function DetailsContainer({playlist}) {
+export function DetailsContainer({ playlist }) {
   const { mood } = useParams();
 
   const taglines = {
@@ -42,14 +39,12 @@ export function DetailsContainer({playlist}) {
         style={{
           flex: 2,
           height: '100%',
-          border: '1px solid black',
         }}
       >
         <div
           className="mood-info"
           style={{
             padding: 0,
-            border: `1px solid black`,
             fontFamily: `'Baloo Thambi 2', system-ui`,
             fontSize: '5rem',
             fontWeight: 800,
@@ -62,7 +57,6 @@ export function DetailsContainer({playlist}) {
         <div
           className="mood-description"
           style={{
-            border: `1px solid black`,
             fontFamily: `"Bellota", system-ui`,
             fontSize: '2rem',
             color: 'var(--text-color)',
@@ -84,7 +78,7 @@ export function DetailsContainer({playlist}) {
           backgroundColor: `var(--songsCard-color)`,
         }}
       >
-        <div className="playlist-song-details" style={{ flex: 2}}>
+        <div className="playlist-song-details" style={{ flex: 2 }}>
           <div
             style={{
               fontFamily: `'Advent Pro', sans-serif`,
@@ -96,21 +90,20 @@ export function DetailsContainer({playlist}) {
           </div>
         </div>
 
-        <div
-  className="playlist-pic"
-  style={{
-    flex:1,
-    height:"100%",
-    border:'1px solid black',
-    backgroundImage: `url(${playlist.picture_xl})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right center', 
-  }}
->
+        <AudioPlayer />
 
-            
-        </div>
+        <div
+          className="playlist-pic"
+          style={{
+            flex: 1,
+            height: '100%',
+            border: '1px solid black',
+            backgroundImage: `url(${playlist.picture_xl})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right center',
+          }}
+        ></div>
       </div>
     </div>
   );

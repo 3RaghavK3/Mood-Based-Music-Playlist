@@ -7,7 +7,6 @@ export function Liked() {
 
   const {likedsongs, setlikedsong}=useContext(LikedContext);
 
-
   return (
     <>
       <MainLayout>
@@ -22,7 +21,7 @@ export function Liked() {
               margin: `0 auto`,
               marginBottom: '10px',
               flex:"1",
-              
+  
             }}
           >
                 

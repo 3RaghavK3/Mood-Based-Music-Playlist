@@ -1,6 +1,6 @@
 :root {
-  --bg-color: initial;
-  --songsCard-color: initial;
-  --text-color: initial;
-  --details-color: initial;
+  --bg-color: #FFE5B6;
+  --songsCard-color: #D9D5A7;
+  --text-color: #000000;
+  --details-color: #DBAC77;
 }

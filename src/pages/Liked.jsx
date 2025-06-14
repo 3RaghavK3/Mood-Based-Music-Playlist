@@ -6,7 +6,7 @@ import { AudioPlayer } from '../components/SongsPage/AudioPlayer';
 export function Liked() { 
 
   const {likedsongs, setlikedsong}=useContext(LikedContext);
-  
+
 
   return (
     <>
@@ -21,7 +21,8 @@ export function Liked() {
               width: '85%',
               margin: `0 auto`,
               marginBottom: '10px',
-              flex:"1"
+              flex:"1",
+              
             }}
           >
                 

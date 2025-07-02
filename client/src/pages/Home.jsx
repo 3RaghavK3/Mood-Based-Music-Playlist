@@ -1,4 +1,4 @@
-import { MainLayout } from '../layout/Mainlayout';
+import { MainLayout } from '../layout/MainLayout';
 import { HomeContent } from '../components/HomePage/HomeContent';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';

@@ -1,4 +1,4 @@
-import { MainLayout } from '../layout/Mainlayout';
+import { MainLayout } from '../layout/MainLayout';
 import { SongCards } from '../components/SongsPage/songCards';
 import { LikedContext } from '../context/LikedContext';
 import { useContext } from 'react';

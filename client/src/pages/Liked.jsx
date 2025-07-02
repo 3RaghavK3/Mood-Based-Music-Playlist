@@ -1,5 +1,5 @@
 import { MainLayout } from '../layout/MainLayout';
-import { SongCards } from '../components/SongsPage/songCards';
+import { SongCards } from '../components/SongsPage/SongCards';
 import { LikedContext } from '../context/LikedContext';
 import { useContext } from 'react';
 import { AudioPlayer } from '../components/SongsPage/AudioPlayer';
@@ -48,6 +48,7 @@ export function Liked() {
           ) : (
             likedsongs.map((song) => (
               <SongCards
+                // @ts-ignore
                 key={song.id}
                 id={song.id}
                 title={song.title}

@@ -7,7 +7,8 @@
     "react-router-dom": "^7.6.2"
   },
   "devDependencies": {
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
   },
   "name": "mood-based-music-playlist",
   "version": "1.0.0",

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { DetailsContainer } from '../components/SongsPage/DetailsContainer';
-import { SongCards } from '../components/SongsPage/songCards';
-import { MainLayout } from '../layout/Mainlayout';
+import { SongCards } from '../components/SongsPage/SongCards';
+import { MainLayout } from '../layout/MainLayout';
 import { useEffect, useState, useRef, useContext } from 'react';
 import { SongsPageContext } from '../context/SongsPageContext';
 
@@ -51,6 +51,7 @@ export function SongsPage() {
   useEffect(() => {
     if (count.current == 1) return;
     if (fetchedMoods.current.has(mood) && !shufflepressed) return;
+    // @ts-ignore
     fetch(`${import.meta.env.VITE_API_URL}/songs/${mood}`)
       .then((res) => res.json())
       .then((data) => {
@@ -122,6 +123,7 @@ export function SongsPage() {
           {songs.map((song) =>
             song.preview ? (
               <SongCards
+                // @ts-ignore
                 key={song.id}
                 id={song.id}
                 title={song.title}

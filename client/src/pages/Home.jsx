@@ -1,11 +1,18 @@
 import { MainLayout } from '../layout/MainLayout';
 import { HomeContent } from '../components/HomePage/HomeContent';
+// @ts-ignore
 import { useState } from 'react';
+// @ts-ignore
 import { motion, AnimatePresence } from 'framer-motion';
+// @ts-ignore
 import bg1 from '../assets/happy-bg.png';
+// @ts-ignore
 import bg2 from '../assets/energetic-bg.jpg';
+// @ts-ignore
 import bg3 from '../assets/chill-bg.jpg';
+// @ts-ignore
 import bg4 from '../assets/focus-bg.jpg';
+// @ts-ignore
 import bg5 from '../assets/sad-bg.jpg';
 import './Home.css';
 

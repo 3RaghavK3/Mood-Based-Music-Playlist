@@ -51,7 +51,7 @@ export function SongsPage() {
   useEffect(() => {
     if (count.current == 1) return;
     if (fetchedMoods.current.has(mood) && !shufflepressed) return;
-    fetch(`http://localhost:3000/songs/${mood}`)
+    fetch(`${import.meta.env.VITE_API_URL}/songs/${mood}`)
       .then((res) => res.json())
       .then((data) => {
         setSongs(data.tracksinfo);

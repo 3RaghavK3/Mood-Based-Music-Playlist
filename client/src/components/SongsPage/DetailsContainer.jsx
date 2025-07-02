@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import '../../pages/SongsPage.css';
-import { useEffect,useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { AudioPlayer } from './AudioPlayer';
 import { SongsPageContext } from '../../context/SongsPageContext';
 
 export function DetailsContainer() {
-  const { playlist } = useContext(SongsPageContext );
+  const { playlist } = useContext(SongsPageContext);
   const { mood } = useParams();
 
   const taglines = {
@@ -15,8 +15,6 @@ export function DetailsContainer() {
     Focus: 'Music to sharpen your mind',
     Energetic: 'Boost your energy with these beats',
   };
-
-  
 
   return (
     <div
@@ -82,7 +80,6 @@ export function DetailsContainer() {
           </div>
         </div>
 
-            
         <div
           className="playlist-pic"
           style={{

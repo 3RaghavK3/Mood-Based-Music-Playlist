@@ -3,17 +3,16 @@ import { DetailsContainer } from '../components/SongsPage/detailsContainer';
 import { SongCards } from '../components/SongsPage/songCards';
 import { MainLayout } from '../layout/Mainlayout';
 import { useEffect, useState, useRef, useContext } from 'react';
-import { SongsPageContext  } from '../context/SongsPageContext';
+import { SongsPageContext } from '../context/SongsPageContext';
 
 import './SongsPage.css';
 
-
 export function SongsPage() {
   const { mood } = useParams();
-  const {songs, setSongs,fetchedMoods,playlist, setPlaylist} = useContext(SongsPageContext)
+  const { songs, setSongs, fetchedMoods, playlist, setPlaylist } = useContext(SongsPageContext);
   const [shufflepressed, setshuffle] = useState(false);
   const count = useRef(0);
-  console.log(fetchedMoods)
+  console.log(fetchedMoods);
   console.log(mood);
 
   const moodColors = {
@@ -49,9 +48,9 @@ export function SongsPage() {
     },
   };
 
-useEffect(() => {
-    if (count.current == 1 ) return;
-    if(fetchedMoods.current.has(mood) && !shufflepressed ) return
+  useEffect(() => {
+    if (count.current == 1) return;
+    if (fetchedMoods.current.has(mood) && !shufflepressed) return;
     fetch(`http://localhost:3000/songs/${mood}`)
       .then((res) => res.json())
       .then((data) => {
@@ -62,8 +61,7 @@ useEffect(() => {
         setshuffle(false);
       })
       .catch(console.error);
-  }, [ mood,shufflepressed]);
-
+  }, [mood, shufflepressed]);
 
   const changecolors = () => {
     const colors = moodColors[mood];
@@ -81,60 +79,58 @@ useEffect(() => {
   return (
     <>
       <MainLayout>
-        
+        <div
+          className="wrapper-container"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            marginTop: '75px',
+            width: '85%',
+            margin: `0 auto`,
+            marginBottom: '10px',
+          }}
+        >
+          <DetailsContainer />
           <div
-            className="wrapper-container"
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              marginTop: '75px',
-              width: '85%',
-              margin: `0 auto`,
-              marginBottom: '10px',
+              width: '100%',
+              fontFamily: 'Advent Pro',
+              fontSize: '2rem',
             }}
           >
-            <DetailsContainer />
-            <div
-              style={{
-                width: '100%',
-                fontFamily: 'Advent Pro',
-                fontSize: '2rem',
-              }}
-            >
-              <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
-                <div>Recommended Tracks</div>
-                <div
-                  onClick={() => {
-                    setshuffle(true);
-                    count.current = 0;
-                  }}
-                  style={{
-                    backgroundColor: 'var(--details-color)',
-                    color: 'var(--text-color)',
-                    fontSize: '1.5rem',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Shuffle Playlist
-                </div>
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
+              <div>Recommended Tracks</div>
+              <div
+                onClick={() => {
+                  setshuffle(true);
+                  count.current = 0;
+                }}
+                style={{
+                  backgroundColor: 'var(--details-color)',
+                  color: 'var(--text-color)',
+                  fontSize: '1.5rem',
+                  cursor: 'pointer',
+                }}
+              >
+                Shuffle Playlist
               </div>
+            </div>
 
-              {console.log(songs)}
-
-            </div >
-          
-                    {songs.map((song) =>
-              song.preview ? (
-                <SongCards
-                  key={song.id}
-                  id={song.id}
-                  title={song.title}
-                  artist={song.artist.name}
-                  preview={song.preview}
-                />
-              ) : null
-            )}
+            {console.log(songs)}
           </div>
+
+          {songs.map((song) =>
+            song.preview ? (
+              <SongCards
+                key={song.id}
+                id={song.id}
+                title={song.title}
+                artist={song.artist.name}
+                preview={song.preview}
+              />
+            ) : null
+          )}
+        </div>
       </MainLayout>
     </>
   );

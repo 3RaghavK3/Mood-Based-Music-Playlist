@@ -14,11 +14,10 @@ export function MainLayout({ children }) {
       }}
     >
       <Header />
-     
-        {children}
-      
+
+      {children}
+
       <Footer />
     </div>
   );
 }
-

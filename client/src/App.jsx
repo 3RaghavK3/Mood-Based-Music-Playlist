@@ -7,15 +7,14 @@ import { AudioPlayer } from './components/SongsPage/AudioPlayer';
 export function App() {
   return (
     <>
-    
       <BrowserRouter>
-      <PlayerProvider>
-        <SongsPageProvider>
-          <LikedProvider>
-             <AudioPlayer/>
-        <AppRoutes />
-        </LikedProvider>
-        </SongsPageProvider>
+        <PlayerProvider>
+          <SongsPageProvider>
+            <LikedProvider>
+              <AudioPlayer />
+              <AppRoutes />
+            </LikedProvider>
+          </SongsPageProvider>
         </PlayerProvider>
       </BrowserRouter>
       {/* <Loading/> */}

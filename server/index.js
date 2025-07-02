@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { fetchSongs } from '../src/api/fetchPlaylist.js';
+import { fetchSongs } from './fetchPlaylist.js';
 
 const port = 3000;
 const app = express();

@@ -1,4 +1,6 @@
 import { audio } from 'motion/react-client';
+
+// @ts-ignore
 import { Heart } from '../../assets/heartIcon';
 import { PausePlay } from '../../assets/PausePlay';
 import '../../pages/SongsPage.css';

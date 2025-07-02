@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { DetailsContainer } from '../components/SongsPage/detailsContainer';
+import { DetailsContainer } from '../components/SongsPage/DetailsContainer';
 import { SongCards } from '../components/SongsPage/songCards';
 import { MainLayout } from '../layout/Mainlayout';
 import { useEffect, useState, useRef, useContext } from 'react';

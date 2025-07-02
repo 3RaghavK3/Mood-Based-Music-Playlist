@@ -1,7 +1,7 @@
 import { audio } from 'motion/react-client';
 
-// @ts-ignore
-import { Heart } from '../../assets/heartIcon';
+
+import { Heart } from '../../assets/HeartIcon';
 import { PausePlay } from '../../assets/PausePlay';
 import '../../pages/SongsPage.css';
 import { useRef } from 'react';

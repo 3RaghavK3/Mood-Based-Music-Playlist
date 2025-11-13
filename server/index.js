@@ -51,3 +51,7 @@ app.get('/songs/:mood', (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
+
+app.get('/health',(req,res)=>{
+  return res.status(200).json({message:"Alive"})
+})

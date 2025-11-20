@@ -4,7 +4,6 @@ import { audio } from 'motion/react-client';
 import { Heart } from '../../assets/HeartIcon';
 import { PausePlay } from '../../assets/PausePlay';
 import '../../pages/SongsPage.css';
-import { useRef } from 'react';
 export function SongCards({ id, title, artist, preview }) {
   return (
     <div

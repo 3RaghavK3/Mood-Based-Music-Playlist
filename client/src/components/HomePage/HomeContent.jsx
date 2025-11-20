@@ -87,7 +87,7 @@ export function HomeContent({
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper ">
       <div className="title">CHOOSE YOUR MOOD</div>
       <div className="title-tagline">
         Select your current mood and we’ll curate a playlist just for you

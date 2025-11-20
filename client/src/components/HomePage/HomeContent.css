@@ -8,10 +8,13 @@
   font-weight: 800;
   color: var(--text-color);
   transition: color 1s ease;
+  text-align: center;
+  
 }
 
 .title-tagline {
   font-family: 'Advent Pro', sans-serif;
+  text-align: center;
   font-size: 1.5rem;
   color: var(--text-color);
   transition: color 1s ease;
@@ -43,6 +46,7 @@
 .carousel {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
   font-family: 'Advent Pro', sans-serif;
   font-size: 1.5rem;
@@ -52,4 +56,34 @@
 
 .carousel .button {
   cursor: pointer;
+}
+
+@media (min-width: 355px) and (max-width: 767px) {
+  .title {
+  font-size:3rem; 
+  line-height: 3rem;
+}
+.title-tagline {
+  font-size: 1rem; 
+}
+.mood{
+  font-size: 1rem;
+}
+.submit-btn {
+  font-size: 1rem;
+}
+
+
+}
+  
+
+@media  (min-width: 768px) and (max-width:1024px) {
+  
+.title {
+  font-size:4rem; 
+  line-height: 4rem;
+}
+
+
+  
 }

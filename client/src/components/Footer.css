@@ -1,0 +1,18 @@
+.footer {
+  background-color: black;
+  font-size: 1rem;
+  font-family: 'Advent Pro', sans-serif;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+@media (min-width: 355px) and (max-width: 767px) {
+  .footer{
+    font-size: 0.75rem;
+  }
+}
+  
+  

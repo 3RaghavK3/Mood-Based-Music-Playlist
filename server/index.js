@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors());
 
-app.get('/music-playlist/songs/:mood', (req, res) => {
+app.get('/songs/:mood', (req, res) => {
   let mood = req.params.mood;
 
   fetchSongs(mood)
@@ -52,6 +52,6 @@ app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
 
-app.get('/music-playlist/health',(req,res)=>{
+app.get('/health',(req,res)=>{
   return res.status(200).json({message:"Alive"})
 })

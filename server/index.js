@@ -5,8 +5,6 @@ import { fetchSongs } from './fetchPlaylist.js';
 const port = process.env.PORT || 3000;
 const app = express();
 
-app.use(cors());
-
 app.get('/songs/:mood', (req, res) => {
   let mood = req.params.mood;
 
